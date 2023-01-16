@@ -38,10 +38,30 @@ app.get("/", (req, res) => {
 });
 
 // Añade un contrato con los datos
-app.get("/addcontract", (req, res) => {
-  res.json({
-    response: "add contract success",
+app.post("/addcontract", (req, res) => {
+
+  const contrato = new Contrato({
+    nombre: req.body.nombre,
+    apellido1: req.body.apellido1,
+    apellido2: req.body.apellido2,
+    documento: req.body.documento,
+    cp: req.body.cp,
+    localidad: req.body.localidad,
+    direccion: req.body.direccion,
+    telefono: req.body.telefono,
   });
+  contrato
+    .save()
+    .then(doc => {
+      res.json({
+        response: "Contrato creado correctamente",
+      });
+    })
+    .catch((error) => {
+      res.json({
+        message: error.message,
+      });
+    });
 });
 
 app.listen(3000, () => {
