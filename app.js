@@ -13,7 +13,7 @@ var corsOptions = {
 
 // Middlewares
 app.use(express.json());
-
+app.use(cors(corsOptions));
 // Conexion BD
 const connection = mongoose.connection;
 
@@ -23,9 +23,8 @@ connection.once("open", () => {
 connection.on("error", (error) => {
   console.log("Error en la conexión a la BD: ", error);
 });
-app.use(cors(corsOptions));
-//Rutas
 
+//Rutas
 app.use("/", contratosRouter);
 
 app.listen(PORT, () => {
