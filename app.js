@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("./config/mongoose.config.js");
 const contratosRouter = require("./routers/contratos.router")
 const app = express();
+let PORT = process.env.PORT ||3005
 
 // Middlewares
 app.use(express.json());
@@ -20,6 +21,6 @@ connection.on("error", (error) => {
 app.use("/", contratosRouter);
 
 
-app.listen(3000, () => {
-  console.log("Servidor levantado");
+app.listen(PORT, () => {
+  console.log("Servidor levantado en el puerto: " + PORT);
 });
