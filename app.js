@@ -3,6 +3,7 @@ const mongoose = require("./config/mongoose.config.js");
 const contratosRouter = require("./routers/contratos.router");
 const app = express();
 let PORT = process.env.PORT || 3005;
+const cors = require('cors')
 var corsOptions = {
   origin: "*",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
