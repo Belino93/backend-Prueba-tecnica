@@ -1,5 +1,6 @@
 const ContratoModel = require("../models/contratos.model");
 const { contratoFindOne } = require("../services/contratos.services");
+const { readCsv } = require("../services/csvParser.services");
 
 const contratoCreateController = async (req, res) => {
   try {
@@ -63,9 +64,21 @@ const contratoPatchDeleteController = async (req, res) => {
   }
 };
 
+const getLocalidad = (req, res) => {
+  try {
+    const { cp } = req.body;
+    const csvData = readCsv();
+    const locality = csvData.filter((element) => element.codigo_postal === cp)
+    res.json(locality[0].municipio_nombre);
+  } catch (error) {
+    res.json({message: 'CP no coincide'})
+  }
+};
+
 module.exports = {
   contratoCreateController,
   contratosGetAllController,
   contratoPatchController,
   contratoPatchDeleteController,
+  getLocalidad,
 };
