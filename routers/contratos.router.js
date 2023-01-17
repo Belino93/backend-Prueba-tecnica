@@ -13,6 +13,6 @@ contratosRouter.post('/addcontract', contratoCreateController);
 contratosRouter.get('/listcontracts', contratosGetAllController)
 contratosRouter.patch('/modifycontract', contratoPatchController)
 contratosRouter.patch('/deletecontract', contratoPatchDeleteController)
-contratosRouter.get('/getlocalidad', getLocalidad)
+contratosRouter.post('/getlocalidad', getLocalidad)
 
 module.exports = contratosRouter;
