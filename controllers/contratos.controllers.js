@@ -36,7 +36,6 @@ const contratoPatchController = async (req, res) => {
     const uuid = req.body.uuid;
     const contrato = req.body.contrato;
     const contratoFound = await contratoFindOne(uuid);
-    console.log(contratoFound);
     if (contratoFound) {
       for (const key in contrato) {
         contratoFound[key] = contrato[key];
