@@ -71,7 +71,7 @@ const getLocalidad = (req, res) => {
     const locality = csvData.filter((element) => element.codigo_postal === cp)
     res.json(locality[0].municipio_nombre);
   } catch (error) {
-    res.json({message: 'CP no coincide'})
+    res.json({message: 'CP no valido'})
   }
 };
 
